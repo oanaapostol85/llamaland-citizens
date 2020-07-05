@@ -48,12 +48,16 @@ public class LlamalandCitizensToCelebrateFinder {
     }
 
     public void prettyPrint() {
-        System.out.println("Llamaland citizen to celebrate:");
-        llamalandCitizensToCelebrate.forEach(llamalandCitizen -> System.out.printf("%s %s, %s, %s\n",
-                llamalandCitizen.getFirstName(),
-                llamalandCitizen.getLastName(),
-                llamalandCitizen.getDateOfBirth(),
-                llamalandCitizen.getEmail()));
+        if (!llamalandCitizensToCelebrate.isEmpty()) {
+            System.out.println("Llamaland citizens to celebrate:");
+            llamalandCitizensToCelebrate.forEach(llamalandCitizen -> System.out.printf("%s %s, %s, %s\n",
+                    llamalandCitizen.getFirstName(),
+                    llamalandCitizen.getLastName(),
+                    llamalandCitizen.getDateOfBirth(),
+                    llamalandCitizen.getEmail()));
+        } else {
+            System.out.println("No Llamaland citizens to celebrate!");
+        }
     }
 
 
