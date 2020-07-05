@@ -6,7 +6,7 @@ import java.util.function.Predicate;
 import static java.time.DayOfWeek.SATURDAY;
 import static java.time.DayOfWeek.SUNDAY;
 
-public class LlamalandCitizenToCelebrate implements Predicate<LlamalandCitizen> {
+public class LlamalandCitizenToCelebratePredicate implements Predicate<LlamalandCitizen> {
 
     private static final int YEARS_TO_CELEBRATE = 100;
 
@@ -14,7 +14,7 @@ public class LlamalandCitizenToCelebrate implements Predicate<LlamalandCitizen> 
 
     private final int weekdaysNotice;
 
-    public LlamalandCitizenToCelebrate(LocalDate fromDate, int weekdaysNotice) {
+    public LlamalandCitizenToCelebratePredicate(LocalDate fromDate, int weekdaysNotice) {
         this.fromDate = fromDate;
         this.weekdaysNotice = weekdaysNotice;
     }

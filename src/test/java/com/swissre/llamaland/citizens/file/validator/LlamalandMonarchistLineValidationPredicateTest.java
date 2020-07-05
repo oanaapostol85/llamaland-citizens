@@ -12,24 +12,24 @@ import static java.util.Arrays.asList;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class LlamalandMonarchistLineValidatorTest {
+public class LlamalandMonarchistLineValidationPredicateTest {
 
-    private LlamalandMonarchistLineValidator validator;
+    private LlamalandMonarchistLineValidationPredicate validationPredicate;
 
     @BeforeEach
     public void setUp() {
-        validator = new LlamalandMonarchistLineValidator();
+        validationPredicate = new LlamalandMonarchistLineValidationPredicate();
     }
 
     @Test
     public void givenValidLine_whenTest_thenReturnsTrue() {
-        assertTrue(validator.test(asList("Apostol", "Oana", "01-03-2020", "test@email.com")));
+        assertTrue(validationPredicate.test(asList("Apostol", "Oana", "01-03-2020", "test@email.com")));
     }
 
     @ParameterizedTest
     @MethodSource
     public void givenInvalidLine_whenTest_thenReturnsFalse(List<String> invalidLine) {
-        assertFalse(validator.test(invalidLine));
+        assertFalse(validationPredicate.test(invalidLine));
     }
 
     private static Stream<List<String>> givenInvalidLine_whenTest_thenReturnsFalse() {

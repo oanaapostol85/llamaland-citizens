@@ -12,14 +12,14 @@ import static java.time.Month.JULY;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class LlamalandCitizenToCelebrateTest {
+public class LlamalandCitizenToCelebratePredicateTest {
 
     @ParameterizedTest
     @MethodSource
     public void givenLlamalandCitizenToCelebrateAndFromDateIsWeekday_whenTest_thenReturnsTrue(LocalDate dateOfBirth) {
-        LlamalandCitizenToCelebrate llamalandCitizenToCelebrate = new LlamalandCitizenToCelebrate(of(2020, JULY, 3), 5);
+        LlamalandCitizenToCelebratePredicate llamalandCitizenToCelebratePredicate = new LlamalandCitizenToCelebratePredicate(of(2020, JULY, 3), 5);
 
-        boolean result = llamalandCitizenToCelebrate.test(new LlamalandCitizenBuilder()
+        boolean result = llamalandCitizenToCelebratePredicate.test(new LlamalandCitizenBuilder()
                 .setDateOfBirth(dateOfBirth)
                 .build());
 
@@ -34,9 +34,9 @@ public class LlamalandCitizenToCelebrateTest {
 
     @Test
     public void givenLlamalandCitizenToCelebrateAndFromDateIsWeekend_whenTest_thenReturnsTrue() {
-        LlamalandCitizenToCelebrate llamalandCitizenToCelebrate = new LlamalandCitizenToCelebrate(of(2020, JULY, 5), 5);
+        LlamalandCitizenToCelebratePredicate llamalandCitizenToCelebratePredicate = new LlamalandCitizenToCelebratePredicate(of(2020, JULY, 5), 5);
 
-        boolean result = llamalandCitizenToCelebrate.test(new LlamalandCitizenBuilder()
+        boolean result = llamalandCitizenToCelebratePredicate.test(new LlamalandCitizenBuilder()
                 .setDateOfBirth(of(1920, JULY, 13))
                 .build());
 
@@ -45,9 +45,9 @@ public class LlamalandCitizenToCelebrateTest {
 
     @Test
     public void givenLlamalandCitizenNotYetToCelebrate_whenTest_thenReturnsFalse() {
-        LlamalandCitizenToCelebrate llamalandCitizenToCelebrate = new LlamalandCitizenToCelebrate(of(2020, JULY, 5), 3);
+        LlamalandCitizenToCelebratePredicate llamalandCitizenToCelebratePredicate = new LlamalandCitizenToCelebratePredicate(of(2020, JULY, 5), 3);
 
-        boolean result = llamalandCitizenToCelebrate.test(new LlamalandCitizenBuilder()
+        boolean result = llamalandCitizenToCelebratePredicate.test(new LlamalandCitizenBuilder()
                 .setDateOfBirth(of(1920, JULY, 13))
                 .build());
 
@@ -56,9 +56,9 @@ public class LlamalandCitizenToCelebrateTest {
 
     @Test
     public void givenLlamalandCitizenNonMonarchist_whenTest_thenReturnsFalse() {
-        LlamalandCitizenToCelebrate llamalandCitizenToCelebrate = new LlamalandCitizenToCelebrate(of(2020, JULY, 5), 3);
+        LlamalandCitizenToCelebratePredicate llamalandCitizenToCelebratePredicate = new LlamalandCitizenToCelebratePredicate(of(2020, JULY, 5), 3);
 
-        boolean result = llamalandCitizenToCelebrate.test(new LlamalandCitizenBuilder().build());
+        boolean result = llamalandCitizenToCelebratePredicate.test(new LlamalandCitizenBuilder().build());
 
         assertFalse(result);
     }

@@ -13,24 +13,24 @@ import static java.util.Collections.singletonList;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class LlamalandNonMonarchistLineValidatorTest {
+public class LlamalandNonMonarchistLineValidationPredicateTest {
 
-    private LlamalandNonMonarchistLineValidator validator;
+    private LlamalandNonMonarchistLineValidationPredicate validationPredicate;
 
     @BeforeEach
     public void setUp() {
-        validator = new LlamalandNonMonarchistLineValidator();
+        validationPredicate = new LlamalandNonMonarchistLineValidationPredicate();
     }
 
     @Test
     public void givenValidLine_whenTest_thenReturnsTrue() {
-        assertTrue(validator.test(singletonList("test@email.com")));
+        assertTrue(validationPredicate.test(singletonList("test@email.com")));
     }
 
     @ParameterizedTest
     @MethodSource
     public void givenInvalidLine_whenTest_thenReturnsFalse(List<String> invalidLine) {
-        assertFalse(validator.test(invalidLine));
+        assertFalse(validationPredicate.test(invalidLine));
     }
 
     private static Stream<List<String>> givenInvalidLine_whenTest_thenReturnsFalse() {

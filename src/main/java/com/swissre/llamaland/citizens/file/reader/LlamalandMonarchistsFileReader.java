@@ -2,7 +2,7 @@ package com.swissre.llamaland.citizens.file.reader;
 
 import com.swissre.llamaland.citizens.LlamalandCitizen;
 import com.swissre.llamaland.citizens.LlamalandCitizenBuilder;
-import com.swissre.llamaland.citizens.file.validator.LlamalandMonarchistLineValidator;
+import com.swissre.llamaland.citizens.file.validator.LlamalandMonarchistLineValidationPredicate;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -16,7 +16,7 @@ public class LlamalandMonarchistsFileReader implements LlamalandCitizensFileRead
 
     @Override
     public Predicate<List<String>> isValidLine() {
-        return new LlamalandMonarchistLineValidator();
+        return new LlamalandMonarchistLineValidationPredicate();
     }
 
     @Override
