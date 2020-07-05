@@ -11,6 +11,11 @@ public class LlamalandCitizensApplication {
         String monarchistsFilePath = readMonarchistsFilePath(scanner);
         String nonMonarchistsFilePath = readNonMonarchistsFilePath(scanner);
 
+        new LlamalandCitizensToCelebrateFinder()
+                .withMonarchistsFilePath(monarchistsFilePath)
+                .withNonMonarchistsFilePath(nonMonarchistsFilePath)
+                .findLlamalandCitizensToCelebrate()
+                .prettyPrint();
     }
 
     private static String readMonarchistsFilePath(Scanner scanner) {
