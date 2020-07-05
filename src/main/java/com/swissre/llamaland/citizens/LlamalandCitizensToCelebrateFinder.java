@@ -49,7 +49,7 @@ public class LlamalandCitizensToCelebrateFinder {
 
     public void prettyPrint() {
         System.out.println("Llamaland citizen to celebrate:");
-        llamalandCitizensToCelebrate.forEach(llamalandCitizen -> System.out.printf("FirstName: %s, LastName: %s, DateOfBirth: %s, Email: %s\n",
+        llamalandCitizensToCelebrate.forEach(llamalandCitizen -> System.out.printf("%s %s, %s, %s\n",
                 llamalandCitizen.getFirstName(),
                 llamalandCitizen.getLastName(),
                 llamalandCitizen.getDateOfBirth(),
