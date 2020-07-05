@@ -19,7 +19,7 @@ public class LlamalandCitizensApplication {
     }
 
     private static String readMonarchistsFilePath(Scanner scanner) {
-        System.out.print("Enter the path of the file containing the civil servants of the monarchy: ");
+        System.out.print("Enter the path of the file containing the citizens supporting the monarchy: ");
         return scanner.next();
     }
 
