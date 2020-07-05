@@ -9,8 +9,8 @@ public class LlamalandMonarchistLineValidator implements Predicate<List<String>>
 
     @Override
     public boolean test(List<String> line) {
-        return new LineSizeValidator(NO_OF_COLUMNS).test(line)
-                && new DateOfBirthValidator().test(line.get(2))
-                && new EmailValidator().test(line.get(3));
+        return new LineSizeValidator(NO_OF_COLUMNS).isValid(line)
+                && new DateOfBirthValidator().isValid(line.get(2))
+                && new EmailValidator().isValid(line.get(3));
     }
 }

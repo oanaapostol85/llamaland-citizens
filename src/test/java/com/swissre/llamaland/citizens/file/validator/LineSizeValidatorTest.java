@@ -18,12 +18,12 @@ public class LineSizeValidatorTest {
     }
 
     @Test
-    public void givenValidLineSize_whenTest_thenReturnsTrue() {
-        assertTrue(validator.test(asList("foo", "bar")));
+    public void givenValidLineSize_whenIsValid_thenReturnsTrue() {
+        assertTrue(validator.isValid(asList("foo", "bar")));
     }
 
     @Test
-    public void givenInvalidLineSize_whenTest_thenReturnsFalse() {
-        assertFalse(validator.test(singletonList("foo")));
+    public void givenInvalidLineSize_whenIsValid_thenReturnsFalse() {
+        assertFalse(validator.isValid(singletonList("foo")));
     }
 }

@@ -18,13 +18,13 @@ public class EmailValidatorTest {
     }
 
     @Test
-    public void givenValidEmail_whenTest_thenReturnsTrue() {
-        assertTrue(validator.test("valid@test.com"));
+    public void givenValidEmail_whenIsValid_thenReturnsTrue() {
+        assertTrue(validator.isValid("valid@test.com"));
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"invalid", "@test.com", "invalid@test"})
-    public void givenInvalidEmail_whenTest_thenReturnsFalse(String invalidEmail) {
-        assertFalse(validator.test(invalidEmail));
+    public void givenInvalidEmail_whenIsValid_thenReturnsFalse(String invalidEmail) {
+        assertFalse(validator.isValid(invalidEmail));
     }
 }

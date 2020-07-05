@@ -2,14 +2,13 @@ package com.swissre.llamaland.citizens.file.validator;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
-import java.util.function.Predicate;
 
 import static com.swissre.llamaland.citizens.file.reader.LlamalandMonarchistsFileReader.DATE_TIME_FORMATTER;
 
-public class DateOfBirthValidator implements Predicate<String> {
+public class DateOfBirthValidator implements Validator<String> {
 
     @Override
-    public boolean test(String dateOfBirth) {
+    public boolean isValid(String dateOfBirth) {
         try {
             LocalDate.parse(dateOfBirth, DATE_TIME_FORMATTER);
         } catch (DateTimeParseException e) {

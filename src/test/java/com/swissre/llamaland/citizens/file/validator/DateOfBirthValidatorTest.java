@@ -16,12 +16,12 @@ public class DateOfBirthValidatorTest {
     }
 
     @Test
-    public void givenValidDateFormat_whenTest_thenReturnsTrue() {
-        assertTrue(validator.test("10-05-2020"));
+    public void givenValidDateFormat_whenIsValid_thenReturnsTrue() {
+        assertTrue(validator.isValid("10-05-2020"));
     }
 
     @Test
-    public void givenInvalidDateFormat_whenTest_thenReturnsFalse() {
-        assertFalse(validator.test("2020-05-10"));
+    public void givenInvalidDateFormat_whenIsValid_thenReturnsFalse() {
+        assertFalse(validator.isValid("2020-05-10"));
     }
 }
