@@ -3,9 +3,7 @@ package com.swissre.llamaland.citizens;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
-
-import static java.util.stream.Collectors.counting;
-import static java.util.stream.Collectors.groupingBy;
+import java.util.stream.Collectors;
 
 public class LlamalandCitizenDuplicateEmailPredicate implements Predicate<LlamalandCitizen> {
 
@@ -18,7 +16,7 @@ public class LlamalandCitizenDuplicateEmailPredicate implements Predicate<Llamal
     @Override
     public boolean test(LlamalandCitizen llamalandCitizen) {
         Map<String, Long> emailCounter = llamalandCitizens.stream()
-                .collect(groupingBy(LlamalandCitizen::getEmail, counting()));
+                .collect(Collectors.groupingBy(LlamalandCitizen::getEmail, Collectors.counting()));
         return emailCounter.get(llamalandCitizen.getEmail()) > 1;
     }
 }

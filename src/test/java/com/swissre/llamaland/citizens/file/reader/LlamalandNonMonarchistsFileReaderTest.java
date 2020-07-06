@@ -9,7 +9,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.util.Iterator;
 import java.util.List;
 
-import static com.swissre.llamaland.citizens.file.reader.FilePath.getFilePathFromResources;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class LlamalandNonMonarchistsFileReaderTest {
@@ -25,7 +24,7 @@ public class LlamalandNonMonarchistsFileReaderTest {
     @ValueSource(strings = {"non_monarchists.csv", "non_monarchists_with_invalid_lines.csv"})
     public void givenValidInputFile_whenReadFile_thenLlamalandCitizenAreReturned(String fileName) {
 
-        List<LlamalandCitizen> llamalandCitizens = fileReader.readFile(getFilePathFromResources(fileName));
+        List<LlamalandCitizen> llamalandCitizens = fileReader.readFile(FilePath.getFilePathFromResources(fileName));
 
         assertFalse(llamalandCitizens.isEmpty());
         assertEquals(2, llamalandCitizens.size());

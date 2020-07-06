@@ -3,20 +3,19 @@ package com.swissre.llamaland.citizens.file.reader;
 import com.swissre.llamaland.citizens.LlamalandCitizen;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Collections;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-import static java.nio.file.Files.readAllLines;
-import static java.nio.file.Paths.get;
 import static java.util.Arrays.asList;
-import static java.util.Collections.emptyList;
-import static java.util.regex.Pattern.compile;
 
 public interface LlamalandCitizensFileReadable {
 
-    Pattern DELIMITER = compile(",");
+    Pattern DELIMITER = Pattern.compile(",");
 
     LlamalandCitizen mapLineToLlamalandCitizen(List<String> llamalandCitizenDetails);
 
@@ -24,7 +23,7 @@ public interface LlamalandCitizensFileReadable {
 
     default List<LlamalandCitizen> readFile(String filePath) {
         try {
-            return readAllLines(get(filePath))
+            return Files.readAllLines(Paths.get(filePath))
                     .stream()
                     .filter(line -> line != null && !line.isEmpty())
                     .map(line -> asList(DELIMITER.split(line)))
@@ -36,6 +35,6 @@ public interface LlamalandCitizensFileReadable {
             e.printStackTrace();
         }
 
-        return emptyList();
+        return Collections.emptyList();
     }
 }

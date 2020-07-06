@@ -8,8 +8,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static java.lang.String.format;
-import static java.time.LocalDate.of;
 import static java.time.Month.JULY;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -26,7 +24,7 @@ public class LlamalandCitizenToCelebrateFinderTest {
 
                 llamalandCitizens.add(new LlamalandCitizenBuilder()
                         .setEmail(duplicateEmail)
-                        .setDateOfBirth(of(1920, JULY, 3))
+                        .setDateOfBirth(LocalDate.of(1920, JULY, 3))
                         .build());
 
                 llamalandCitizens.add(new LlamalandCitizenBuilder()
@@ -38,7 +36,7 @@ public class LlamalandCitizenToCelebrateFinderTest {
 
             @Override
             LocalDate fromDate() {
-                return of(2020, JULY, 3);
+                return LocalDate.of(2020, JULY, 3);
             }
         };
 
@@ -58,7 +56,7 @@ public class LlamalandCitizenToCelebrateFinderTest {
 
                 llamalandCitizens.add(new LlamalandCitizenBuilder()
                         .setEmail(email)
-                        .setDateOfBirth(of(1920, JULY, 10))
+                        .setDateOfBirth(LocalDate.of(1920, JULY, 10))
                         .build());
 
                 llamalandCitizens.add(new LlamalandCitizenBuilder()
@@ -70,7 +68,7 @@ public class LlamalandCitizenToCelebrateFinderTest {
 
             @Override
             LocalDate fromDate() {
-                return of(2020, JULY, 3);
+                return LocalDate.of(2020, JULY, 3);
             }
         };
 
@@ -88,15 +86,15 @@ public class LlamalandCitizenToCelebrateFinderTest {
             List<LlamalandCitizen> getLlamalandCitizens() {
                 return IntStream.range(0, 25)
                         .mapToObj(i -> new LlamalandCitizenBuilder()
-                                .setEmail(format("uniqueEmail%d@test.com", i))
-                                .setDateOfBirth(of(1920, JULY, 17))
+                                .setEmail(String.format("uniqueEmail%d@test.com", i))
+                                .setDateOfBirth(LocalDate.of(1920, JULY, 17))
                                 .build())
                         .collect(Collectors.toList());
             }
 
             @Override
             LocalDate fromDate() {
-                return of(2020, JULY, 3);
+                return LocalDate.of(2020, JULY, 3);
             }
         };
 

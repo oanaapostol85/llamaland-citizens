@@ -10,8 +10,6 @@ import java.time.LocalDate;
 import java.util.Iterator;
 import java.util.List;
 
-import static com.swissre.llamaland.citizens.file.reader.FilePath.getFilePathFromResources;
-import static java.time.LocalDate.of;
 import static java.time.Month.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -28,16 +26,16 @@ public class LlamalandMonarchistsFileReaderTest {
     @ValueSource(strings = {"monarchists.csv", "monarchists_with_invalid_lines.csv"})
     public void givenValidInputFile_whenReadFile_thenLlamalandCitizenAreReturned(String fileName) {
 
-        List<LlamalandCitizen> llamalandCitizens = fileReader.readFile(getFilePathFromResources(fileName));
+        List<LlamalandCitizen> llamalandCitizens = fileReader.readFile(FilePath.getFilePathFromResources(fileName));
 
         assertFalse(llamalandCitizens.isEmpty());
         assertEquals(3, llamalandCitizens.size());
 
         Iterator<LlamalandCitizen> llamalandCitizenIterator = llamalandCitizens.iterator();
 
-        assertLlamalandCitizen("Bobby", "Brown", of(1959, NOVEMBER, 10), "bobby.brown@ilovellamaland.com", llamalandCitizenIterator.next());
-        assertLlamalandCitizen("Betsy", "O'Rourke", of(1900, FEBRUARY, 28), "betsy@heyitsme.com", llamalandCitizenIterator.next());
-        assertLlamalandCitizen("Alfredo", "Von Tappo", of(1920, JANUARY, 1), "alfie@vontappo.llama.land", llamalandCitizenIterator.next());
+        assertLlamalandCitizen("Bobby", "Brown", LocalDate.of(1959, NOVEMBER, 10), "bobby.brown@ilovellamaland.com", llamalandCitizenIterator.next());
+        assertLlamalandCitizen("Betsy", "O'Rourke", LocalDate.of(1900, FEBRUARY, 28), "betsy@heyitsme.com", llamalandCitizenIterator.next());
+        assertLlamalandCitizen("Alfredo", "Von Tappo", LocalDate.of(1920, JANUARY, 1), "alfie@vontappo.llama.land", llamalandCitizenIterator.next());
     }
 
     @Test

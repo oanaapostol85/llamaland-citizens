@@ -6,9 +6,7 @@ import com.swissre.llamaland.citizens.file.reader.LlamalandNonMonarchistsFileRea
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
-import static java.time.LocalDate.now;
-import static java.util.stream.Collectors.toList;
+import java.util.stream.Collectors;
 
 public class LlamalandCitizensToCelebrateFinder {
 
@@ -35,11 +33,11 @@ public class LlamalandCitizensToCelebrateFinder {
 
         llamalandCitizensToCelebrate = llamalandCitizens.stream()
                 .filter(new LlamalandCitizenToCelebratePredicate(fromDate(), 5))
-                .collect(toList());
+                .collect(Collectors.toList());
 
         List<LlamalandCitizen> llamalandCitizensToCelebrateIn10Days = llamalandCitizens.stream()
                 .filter(new LlamalandCitizenToCelebratePredicate(fromDate(), 10))
-                .collect(toList());
+                .collect(Collectors.toList());
         if (llamalandCitizensToCelebrateIn10Days.size() > 20) {
             llamalandCitizensToCelebrate.addAll(llamalandCitizensToCelebrateIn10Days);
         }
@@ -73,6 +71,6 @@ public class LlamalandCitizensToCelebrateFinder {
     }
 
     LocalDate fromDate() {
-        return now();
+        return LocalDate.now();
     }
 }
