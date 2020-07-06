@@ -3,7 +3,9 @@ package com.swissre.llamaland.citizens;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static java.util.Arrays.asList;
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -17,16 +19,10 @@ public class LlamalandCitizenDuplicateEmailPredicateTest {
 
     @BeforeEach
     public void setUp() {
-        LlamalandCitizen llamalandCitizen1 = new LlamalandCitizenBuilder()
-                .setEmail(UNIQUE_EMAIL)
-                .build();
-        LlamalandCitizen llamalandCitizen2 = new LlamalandCitizenBuilder()
-                .setEmail(DUPLICATE_EMAIL)
-                .build();
-        LlamalandCitizen llamalandCitizen3 = new LlamalandCitizenBuilder()
-                .setEmail(DUPLICATE_EMAIL)
-                .build();
-        llamalandCitizenDuplicateEmailPredicate = new LlamalandCitizenDuplicateEmailPredicate(asList(llamalandCitizen1, llamalandCitizen2, llamalandCitizen3));
+        Map<String, Long> emailCounter = new HashMap<>();
+        emailCounter.put(UNIQUE_EMAIL, 1L);
+        emailCounter.put(DUPLICATE_EMAIL, 2L);
+        llamalandCitizenDuplicateEmailPredicate = new LlamalandCitizenDuplicateEmailPredicate(emailCounter);
     }
 
     @Test

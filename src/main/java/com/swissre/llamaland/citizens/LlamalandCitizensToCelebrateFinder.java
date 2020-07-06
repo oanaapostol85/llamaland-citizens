@@ -29,7 +29,8 @@ public class LlamalandCitizensToCelebrateFinder {
     public LlamalandCitizensToCelebrateFinder findLlamalandCitizensToCelebrate() {
 
         List<LlamalandCitizen> llamalandCitizens = getLlamalandCitizens();
-        llamalandCitizens.removeIf(new LlamalandCitizenDuplicateEmailPredicate(llamalandCitizens));
+        llamalandCitizens.removeIf(new LlamalandCitizenDuplicateEmailPredicate(llamalandCitizens.stream()
+                .collect(Collectors.groupingBy(LlamalandCitizen::getEmail, Collectors.counting()))));
 
         llamalandCitizensToCelebrate = llamalandCitizens.stream()
                 .filter(new LlamalandCitizenToCelebratePredicate(fromDate(), 5))
